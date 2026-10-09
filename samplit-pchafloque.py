@@ -1,7 +1,7 @@
 import random
 import sys
 
-filename = sys.argv[1]
+filename = sys.argv[1] "Comment"
 
 with open(filename) as f:
     for line in f:
