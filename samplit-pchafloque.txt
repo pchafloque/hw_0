@@ -1,0 +1,13 @@
+import random
+import sys
+
+<<<<<<< HEAD
+filename = sys.argv[1] "Comment"
+=======
+filename = sys.argv[1] #This is file to sample
+>>>>>>> hw_1b
+
+with open(filename) as f:
+    for line in f:
+        if random.random() < 0.01:
+            print(line, end = "")
