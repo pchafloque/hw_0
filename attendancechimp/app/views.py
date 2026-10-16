@@ -66,7 +66,7 @@ def time_view(request):
 
 
 def sum_view(request):
-    """Return {"sum": n1 + n2} for /app/sum?n1=...&n2=..."""
+    """Return <p>n1 + n2</p> for /app/sum?n1=...&n2=..."""
     try:
         n1 = float(request.GET.get("n1", 0))
         n2 = float(request.GET.get("n2", 0))
@@ -75,4 +75,4 @@ def sum_view(request):
     total = n1 + n2
     if total.is_integer():
         total = int(total)
-    return JsonResponse({"sum": total})
+    return HttpResponse(f"<p>{total}</p>")
