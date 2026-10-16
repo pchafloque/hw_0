@@ -53,3 +53,26 @@ def index(request):
 
 
 
+
+
+# ---------------------------------------------------------------------------
+# HW2: time and sum endpoints
+# ---------------------------------------------------------------------------
+
+def time_view(request):
+    """Return the current Central time as plain text, e.g. 13:24."""
+    now = datetime.now(CDT)
+    return HttpResponse(now.strftime("%H:%M"), content_type="text/plain")
+
+
+def sum_view(request):
+    """Return {"sum": n1 + n2} for /app/sum?n1=...&n2=..."""
+    try:
+        n1 = float(request.GET.get("n1", 0))
+        n2 = float(request.GET.get("n2", 0))
+    except ValueError:
+        return HttpResponseBadRequest("n1 and n2 must be numbers")
+    total = n1 + n2
+    if total.is_integer():
+        total = int(total)
+    return JsonResponse({"sum": total})
